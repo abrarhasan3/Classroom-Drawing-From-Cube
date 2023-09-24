@@ -50,7 +50,7 @@ float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
 
-float eyeX = 1.0, eyeY = 3.0, eyeZ = 3.0;
+float eyeX = 0.0, eyeY = 8.0, eyeZ = -8.0;
 float lookAtX = -.9, lookAtY = 0.0, lookAtZ = 0.0;
 glm::vec3 V = glm::vec3(0.0f, 1.0f, 0.0f);
 BasicCamera basic_camera(eyeX, eyeY, eyeZ, lookAtX, lookAtY, lookAtZ, V);
@@ -187,16 +187,52 @@ int main()
         4, 5, 7,
         7, 6, 4,
 
+         12, 13, 14,
+        14, 15, 12,
+
+        20, 21, 22,
+        22, 23, 20,
+
         8, 9, 10,
         10, 11, 8,
 
-        12, 13, 14,
+        //The pink walls
+    
+
+       
+
+
+        
+    };
+
+    unsigned int wallInd2[] = {
+        
+        20, 21, 22,
+        22, 23, 20,
+
+        8, 9, 10,
+        10, 11, 8,
+
+        0, 3, 2,
+        2, 1, 0,
+
+        4, 5, 7,
+        7, 6, 4,
+
+         12, 13, 14,
         14, 15, 12,
 
+        
 
-        20, 21, 22,
-        22, 23, 20
+        //The while walls
+
+
+
+
+
+
     };
+
 
     unsigned int VBO, VAO, EBO;
     glGenVertexArrays(1, &VAO);
@@ -238,6 +274,30 @@ int main()
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO2);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(wallInd), wallInd, GL_STATIC_DRAW);
+
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
+    //color attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)12);
+    glEnableVertexAttribArray(1);
+
+
+
+    unsigned int VBO3, VAO3, EBO3;
+
+    glGenVertexArrays(1, &VAO3);
+    glGenBuffers(1, &VBO3);
+    glGenBuffers(1, &EBO3);
+
+    glBindVertexArray(VAO3);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBO3);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(cube_vertices), cube_vertices, GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO3);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(wallInd2), wallInd2, GL_STATIC_DRAW);
 
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
@@ -294,32 +354,43 @@ int main()
         //OUTLINE WALL 
         glm::mat4 identityMatrix = glm::mat4(1.0f); 
         glm::mat4 translateMatrix, rotateXMatrix, rotateYMatrix, rotateZMatrix, scaleMatrix, model;
-        translateMatrix = glm::translate(identityMatrix, glm::vec3(-3.0f, -1.03f, -3.0f));
+        translateMatrix = glm::translate(identityMatrix, glm::vec3(-3.7f, -1.03f, -3.0f));
 
-        scaleMatrix = glm::scale(identityMatrix, glm::vec3(6.5f, 2.0f, 8.0f));
+        scaleMatrix = glm::scale(identityMatrix, glm::vec3(8.5f, 5.0f, 10.0f));
 
         model = translateMatrix * scaleMatrix;
         ourShader.setMat4("model", model);
         ourShader.setVec4("color", glm::vec4(1.0f, 0.8431f, 0.7019f, 1.0f));
 
         glBindVertexArray(VAO2);
+        glDrawElements(GL_TRIANGLES, 18, GL_UNSIGNED_INT, 0);
+
+
+
+      
+        translateMatrix = glm::translate(identityMatrix, glm::vec3(-3.7f, -1.03f, -3.0f));
+
+        scaleMatrix = glm::scale(identityMatrix, glm::vec3(8.5f, 5.0f, 10.0f));
+
+        model = translateMatrix * scaleMatrix;
+        ourShader.setMat4("model", model);
+        ourShader.setVec4("color", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
+
+        glBindVertexArray(VAO3);
         glDrawElements(GL_TRIANGLES, 14, GL_UNSIGNED_INT, 0);
        
 
-
-                
-        translateMatrix = glm::translate(identityMatrix, glm::vec3(-3.0f, -1.03f, -3.0f));
-        scaleMatrix = glm::scale(identityMatrix, glm::vec3(6.5f, 2.0f, 8.0f));
-
-        model = translateMatrix * scaleMatrix;
-        ourShader.setMat4("model", model);
-        ourShader.setVec4("color", glm::vec4(1.0f, 0.8431f, 0.7019f, 1.0f));
-
-
-
-        glBindVertexArray(VAO2);
-        glDrawElements(GL_TRIANGLES, 14, GL_UNSIGNED_INT, (void*)15);
+                      
+      
         
+       
+        
+        
+        sm = glm::translate(identityMatrix, glm::vec3(-1.2f, 0.0f, 1.4f)) * glm::rotate(identityMatrix, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f))  * glm::scale(glm::mat4(1.0f), glm::vec3(0.5f));
+
+        draw(VAO, sm);
+        
+        sm = glm::scale(glm::mat4(1.0f), glm::vec3(0.5f));
         draw(VAO, sm);
 
         
@@ -364,6 +435,20 @@ int main()
             draw(VAO, sm);
         }
 
+
+
+        // Black Board
+
+        translateMatrix = glm::translate(identityMatrix, glm::vec3(-2.4f, -.2f, 1.8f));
+
+        scaleMatrix = glm::scale(identityMatrix, glm::vec3(4.9f, 2.0f, .02f));
+
+        model = translateMatrix * scaleMatrix;
+        ourShader.setMat4("model", model);
+        ourShader.setVec4("color", glm::vec4(0.0f, 0.0f, 0.0f, 1.0f));
+
+        glBindVertexArray(VAO);
+        glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
        
         
 
