@@ -8,6 +8,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -25,6 +26,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void processInput(GLFWwindow* window);
 void draw(unsigned int VAO, glm::mat4 sm);
+
 
 // settings
 const unsigned int SCR_WIDTH = 1000;
@@ -44,16 +46,22 @@ float scale_X = 3.0;
 float scale_Y = .5;
 float scale_Z = 1.0;
 
+float r = 0.0;
+
+bool fanOn = false; 
+
 // camera
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
 
-float eyeX = 0.0, eyeY = 8.0, eyeZ = -8.0;
+float eyeX = 0.0, eyeY = 5.0, eyeZ = -5.0;
 float lookAtX = -.9, lookAtY = 0.0, lookAtZ = 0.0;
 glm::vec3 V = glm::vec3(0.0f, 1.0f, 0.0f);
 BasicCamera basic_camera(eyeX, eyeY, eyeZ, lookAtX, lookAtY, lookAtZ, V);
+
+
 
 // timing
 float deltaTime = 0.0f;    // time between current frame and last frame
@@ -378,6 +386,20 @@ int main()
 
         glBindVertexArray(VAO3);
         glDrawElements(GL_TRIANGLES, 14, GL_UNSIGNED_INT, 0);
+
+
+
+        translateMatrix = glm::translate(identityMatrix, glm::vec3(-1.0f, -1.03f, 1.99f));
+
+        scaleMatrix = glm::scale(identityMatrix, glm::vec3(1.5f, 0.0f, 0.0f));
+
+        model = translateMatrix * scaleMatrix;
+        ourShader.setMat4("model", model);
+        ourShader.setVec4("color", glm::vec4(0.0f, 0.0f, 0.0f, 0.0f));
+
+        glBindVertexArray(VAO3);
+        glDrawElements(GL_LINES, 2, GL_UNSIGNED_INT, 0);
+
        
 
                       
@@ -439,6 +461,7 @@ int main()
 
         // Black Board
 
+
         translateMatrix = glm::translate(identityMatrix, glm::vec3(-2.4f, -.2f, 1.8f));
 
         scaleMatrix = glm::scale(identityMatrix, glm::vec3(4.9f, 2.0f, .02f));
@@ -449,6 +472,163 @@ int main()
 
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+
+        /*
+        translateMatrix = glm::translate(identityMatrix, glm::vec3(-2.4f, -.2f, 1.8f));
+
+        scaleMatrix = glm::scale(identityMatrix, glm::vec3(5.0f, 2.1f, 0.0f));
+
+        model = translateMatrix * scaleMatrix;
+        ourShader.setMat4("model", model);
+        ourShader.setVec4("color", glm::vec4(0.3961f, 0.1961f, 0.0235f, 1.0f));
+
+        glBindVertexArray(VAO);
+        glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);*/
+
+
+
+
+
+        //rgba(101,50,6,255)
+
+
+        // Almirah
+
+
+        translateMatrix = glm::translate(identityMatrix, glm::vec3(-3.7f,-1.3f, 0.8f));
+
+        scaleMatrix = glm::scale(identityMatrix, glm::vec3(1.0f, 3.0f, 1.02f));
+
+        model = translateMatrix * scaleMatrix;
+        ourShader.setMat4("model", model);
+        ourShader.setVec4("color", glm::vec4(.2902f, 0.0f, 0.29412f, 1.0f));
+
+        glBindVertexArray(VAO);
+        glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+
+
+        translateMatrix = glm::translate(identityMatrix, glm::vec3(-3.7f, -1.3f, 1.31f));
+
+        scaleMatrix = glm::scale(identityMatrix, glm::vec3(1.0f, 3.0f, 1.02f));
+
+        model = translateMatrix * scaleMatrix;
+        ourShader.setMat4("model", model);
+        ourShader.setVec4("color", glm::vec4(.2902f, 0.0f, 0.29412f, 1.0f));
+
+        glBindVertexArray(VAO);
+        glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+
+      
+
+
+        //FAN
+        if (fanOn)
+        {
+            translateMatrix = glm::translate(identityMatrix, glm::vec3(0.5f, 0.5f, 0.125f));
+
+            glm::mat4 translateMatrix2 = glm::translate(identityMatrix, glm::vec3(-0.5f, 0.5f, -0.125f));
+
+
+            glm::mat4 translateMatrix3 = glm::translate(identityMatrix, glm::vec3(-1.5f, 1.0f, -1.7f));
+
+            scaleMatrix = glm::scale(identityMatrix, glm::vec3(2.0f, 0.0f, .5f));
+
+            model = translateMatrix3* translateMatrix * glm::rotate(identityMatrix, glm::radians(r), glm::vec3(0.0f, 1.0f, 0.0f))* translateMatrix2 * scaleMatrix ;
+            ourShader.setMat4("model", model);
+            ourShader.setVec4("color", glm::vec4(0.0196, 0.0157f, 0.4f, 1.0f));
+
+            glBindVertexArray(VAO);
+            glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+
+
+            translateMatrix = glm::translate(identityMatrix, glm::vec3(0.5f, 0.5f, 0.125f));
+
+            translateMatrix2 = glm::translate(identityMatrix, glm::vec3(-0.5f, 0.5f, -0.125f));
+
+
+         
+
+            scaleMatrix = glm::scale(identityMatrix, glm::vec3(2.0f, 0.0f, .5f));
+
+            model = translateMatrix3 * translateMatrix * glm::rotate(identityMatrix, glm::radians(r+90.0f), glm::vec3(0.0f, 1.0f, 0.0f)) * translateMatrix2 * scaleMatrix;
+            ourShader.setMat4("model", model);
+            ourShader.setVec4("color", glm::vec4(0.0196, 0.0157f, 0.4f, 1.0f));
+
+            glBindVertexArray(VAO);
+            glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+
+
+            /*
+            translateMatrix = glm::translate(identityMatrix, glm::vec3(0.0f, 1.0f, 0.0f));
+
+            scaleMatrix = glm::scale(identityMatrix, glm::vec3(1.5f, 0.0f, .5f));
+
+            model = glm::rotate(identityMatrix, glm::radians(-90+r), glm::vec3(0.0f, 1.0f, 0.0f))* translateMatrix * scaleMatrix ;
+            ourShader.setMat4("model", model);
+            ourShader.setVec4("color", glm::vec4(0.0, 0.0f, 0.0f, 1.0f));
+
+            glBindVertexArray(VAO);
+            glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+
+
+            translateMatrix = glm::translate(identityMatrix, glm::vec3(0.0f, 1.0f, 0.0f));
+
+            scaleMatrix = glm::scale(identityMatrix, glm::vec3(1.5f, 0.0f, .5f));
+
+            model = glm::rotate(identityMatrix, glm::radians(-180 + r), glm::vec3(0.0f, 1.0f, 0.0f)) * translateMatrix * scaleMatrix;
+            ourShader.setMat4("model", model);
+            ourShader.setVec4("color", glm::vec4(0.0, 0.0f, 0.0f, 1.0f));
+
+            glBindVertexArray(VAO);
+            glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+
+
+            
+            */
+        
+
+            r = (r + 5.0);
+
+        }
+        else
+        {
+            translateMatrix = glm::translate(identityMatrix, glm::vec3(0.5f, 0.5f, 0.125f));
+
+            glm::mat4 translateMatrix2 = glm::translate(identityMatrix, glm::vec3(-0.5f, 0.5f, -0.125f));
+
+
+            glm::mat4 translateMatrix3 = glm::translate(identityMatrix, glm::vec3(-1.5f, 1.0f, -1.7f));
+
+            scaleMatrix = glm::scale(identityMatrix, glm::vec3(2.0f, 0.0f, .5f));
+
+            model = translateMatrix3 * translateMatrix * glm::rotate(identityMatrix, glm::radians(r), glm::vec3(0.0f, 1.0f, 0.0f)) * translateMatrix2 * scaleMatrix;
+            ourShader.setMat4("model", model);
+            ourShader.setVec4("color", glm::vec4(0.0196, 0.0157f, 0.4f, 1.0f));
+
+            glBindVertexArray(VAO);
+            glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+
+
+            translateMatrix = glm::translate(identityMatrix, glm::vec3(0.5f, 0.5f, 0.125f));
+
+            translateMatrix2 = glm::translate(identityMatrix, glm::vec3(-0.5f, 0.5f, -0.125f));
+
+
+
+
+            scaleMatrix = glm::scale(identityMatrix, glm::vec3(2.0f, 0.0f, .5f));
+
+            model = translateMatrix3 * translateMatrix * glm::rotate(identityMatrix, glm::radians( r+90.0f), glm::vec3(0.0f, 1.0f, 0.0f)) * translateMatrix2 * scaleMatrix;
+            ourShader.setMat4("model", model);
+            ourShader.setVec4("color", glm::vec4(0.0196, 0.0157f, 0.4f, 1.0f));
+
+            glBindVertexArray(VAO);
+            glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+
+        }
+
+            
+        
        
         
 
@@ -517,6 +697,8 @@ int main()
     glfwTerminate();
     return 0;
 }
+
+
 
 
 
@@ -691,6 +873,9 @@ void draw(unsigned int VAO, glm::mat4 sm)
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 
+
+
+
 }
 
 
@@ -750,10 +935,10 @@ void processInput(GLFWwindow* window)
     }
     if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS)
     {
-        rotateAngle_Z += 1;
-        rotateAxis_X = 0.0;
-        rotateAxis_Y = 0.0;
-        rotateAxis_Z = 1.0;
+        if (fanOn)
+            fanOn = false;
+        else
+            fanOn = true;
     }
 
     if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS)

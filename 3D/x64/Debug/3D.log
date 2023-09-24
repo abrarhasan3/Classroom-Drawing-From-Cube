@@ -1,30 +1,31 @@
 ﻿  main.cpp
-F:\academic\4-2\Assignments\3D\main.cpp(54,15): warning C4305: 'initializing': truncation from 'double' to 'float'
-F:\academic\4-2\Assignments\3D\main.cpp(356,36): warning C4101: 'rotateXMatrix': unreferenced local variable
-F:\academic\4-2\Assignments\3D\main.cpp(356,66): warning C4101: 'rotateZMatrix': unreferenced local variable
-F:\academic\4-2\Assignments\3D\main.cpp(356,51): warning C4101: 'rotateYMatrix': unreferenced local variable
-F:\academic\4-2\Assignments\3D\main.cpp(724,74): warning C4305: '+=': truncation from 'double' to 'float'
-F:\academic\4-2\Assignments\3D\main.cpp(725,74): warning C4305: '-=': truncation from 'double' to 'float'
-F:\academic\4-2\Assignments\3D\main.cpp(726,74): warning C4305: '+=': truncation from 'double' to 'float'
-F:\academic\4-2\Assignments\3D\main.cpp(727,74): warning C4305: '-=': truncation from 'double' to 'float'
-F:\academic\4-2\Assignments\3D\main.cpp(728,74): warning C4305: '+=': truncation from 'double' to 'float'
-F:\academic\4-2\Assignments\3D\main.cpp(729,74): warning C4305: '-=': truncation from 'double' to 'float'
-F:\academic\4-2\Assignments\3D\main.cpp(730,70): warning C4305: '+=': truncation from 'double' to 'float'
-F:\academic\4-2\Assignments\3D\main.cpp(731,70): warning C4305: '-=': truncation from 'double' to 'float'
-F:\academic\4-2\Assignments\3D\main.cpp(732,70): warning C4305: '+=': truncation from 'double' to 'float'
-F:\academic\4-2\Assignments\3D\main.cpp(733,70): warning C4305: '-=': truncation from 'double' to 'float'
-F:\academic\4-2\Assignments\3D\main.cpp(734,70): warning C4305: '+=': truncation from 'double' to 'float'
-F:\academic\4-2\Assignments\3D\main.cpp(735,70): warning C4305: '-=': truncation from 'double' to 'float'
-F:\academic\4-2\Assignments\3D\main.cpp(761,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-F:\academic\4-2\Assignments\3D\main.cpp(766,21): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-F:\academic\4-2\Assignments\3D\main.cpp(771,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-F:\academic\4-2\Assignments\3D\main.cpp(776,21): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-F:\academic\4-2\Assignments\3D\main.cpp(781,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-F:\academic\4-2\Assignments\3D\main.cpp(786,21): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-F:\academic\4-2\Assignments\3D\main.cpp(791,24): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-F:\academic\4-2\Assignments\3D\main.cpp(796,24): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-F:\academic\4-2\Assignments\3D\main.cpp(801,24): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-F:\academic\4-2\Assignments\3D\main.cpp(806,24): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-F:\academic\4-2\Assignments\3D\main.cpp(811,24): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-F:\academic\4-2\Assignments\3D\main.cpp(816,24): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+F:\academic\4-2\Assignments\3D\main.cpp(60,15): warning C4305: 'initializing': truncation from 'double' to 'float'
+F:\academic\4-2\Assignments\3D\main.cpp(590,20): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\academic\4-2\Assignments\3D\main.cpp(364,36): warning C4101: 'rotateXMatrix': unreferenced local variable
+F:\academic\4-2\Assignments\3D\main.cpp(364,66): warning C4101: 'rotateZMatrix': unreferenced local variable
+F:\academic\4-2\Assignments\3D\main.cpp(364,51): warning C4101: 'rotateYMatrix': unreferenced local variable
+F:\academic\4-2\Assignments\3D\main.cpp(909,74): warning C4305: '+=': truncation from 'double' to 'float'
+F:\academic\4-2\Assignments\3D\main.cpp(910,74): warning C4305: '-=': truncation from 'double' to 'float'
+F:\academic\4-2\Assignments\3D\main.cpp(911,74): warning C4305: '+=': truncation from 'double' to 'float'
+F:\academic\4-2\Assignments\3D\main.cpp(912,74): warning C4305: '-=': truncation from 'double' to 'float'
+F:\academic\4-2\Assignments\3D\main.cpp(913,74): warning C4305: '+=': truncation from 'double' to 'float'
+F:\academic\4-2\Assignments\3D\main.cpp(914,74): warning C4305: '-=': truncation from 'double' to 'float'
+F:\academic\4-2\Assignments\3D\main.cpp(915,70): warning C4305: '+=': truncation from 'double' to 'float'
+F:\academic\4-2\Assignments\3D\main.cpp(916,70): warning C4305: '-=': truncation from 'double' to 'float'
+F:\academic\4-2\Assignments\3D\main.cpp(917,70): warning C4305: '+=': truncation from 'double' to 'float'
+F:\academic\4-2\Assignments\3D\main.cpp(918,70): warning C4305: '-=': truncation from 'double' to 'float'
+F:\academic\4-2\Assignments\3D\main.cpp(919,70): warning C4305: '+=': truncation from 'double' to 'float'
+F:\academic\4-2\Assignments\3D\main.cpp(920,70): warning C4305: '-=': truncation from 'double' to 'float'
+F:\academic\4-2\Assignments\3D\main.cpp(946,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+F:\academic\4-2\Assignments\3D\main.cpp(951,21): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+F:\academic\4-2\Assignments\3D\main.cpp(956,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+F:\academic\4-2\Assignments\3D\main.cpp(961,21): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+F:\academic\4-2\Assignments\3D\main.cpp(966,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+F:\academic\4-2\Assignments\3D\main.cpp(971,21): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+F:\academic\4-2\Assignments\3D\main.cpp(976,24): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+F:\academic\4-2\Assignments\3D\main.cpp(981,24): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+F:\academic\4-2\Assignments\3D\main.cpp(986,24): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+F:\academic\4-2\Assignments\3D\main.cpp(991,24): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+F:\academic\4-2\Assignments\3D\main.cpp(996,24): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+F:\academic\4-2\Assignments\3D\main.cpp(1001,24): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
   3D.vcxproj -> F:\academic\4-2\Assignments\3D\x64\Debug\3D.exe
