@@ -19,11 +19,13 @@ enum Camera_Movement {
     FORWARD,
     BACKWARD,
     LEFT,
-    RIGHT
+    RIGHT,
+    YAW_L,
+    YAW_R
 };
 
 // Default camera values
-const float YAW = -90.0f;
+const float YAW = 90.0f;
 const float PITCH = 0.0f;
 const float SPEED = 2.5f;
 const float SENSITIVITY = 0.1f;
@@ -67,6 +69,11 @@ public:
         updateCameraVectors();
     }
 
+    void updateYaw(float Yaw)
+    {
+        this->Yaw = Yaw;
+        updateCameraVectors();
+    }
     // returns the view matrix calculated using Euler Angles and the LookAt Matrix
     glm::mat4 GetViewMatrix()
     {
@@ -85,6 +92,11 @@ public:
             Position -= Right * velocity;
         if (direction == RIGHT)
             Position += Right * velocity;
+        if (direction == YAW_R)
+            Yaw -= velocity * 15;
+        if (direction == YAW_L)
+            Yaw += velocity * 15;
+        updateCameraVectors();
     }
 
     // processes input received from a mouse input system. Expects the offset value in both the x and y direction.

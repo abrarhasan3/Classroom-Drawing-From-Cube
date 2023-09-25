@@ -49,15 +49,17 @@ float scale_Z = 1.0;
 float r = 0.0;
 
 bool fanOn = false; 
+glm::vec3 cam = glm::vec3(-2.0f, 0.5f, -.5f);
+
 
 // camera
-Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+Camera camera(cam);
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
 
-float eyeX = 0.0, eyeY = 5.0, eyeZ = -5.0;
-float lookAtX = -.9, lookAtY = 0.0, lookAtZ = 0.0;
+float eyeX = 1.0, eyeY = 4.0, eyeZ = -10.0;
+float lookAtX = 0.0, lookAtY = 0.0, lookAtZ = 0.0;
 glm::vec3 V = glm::vec3(0.0f, 1.0f, 0.0f);
 BasicCamera basic_camera(eyeX, eyeY, eyeZ, lookAtX, lookAtY, lookAtZ, V);
 
@@ -220,6 +222,13 @@ int main()
 
         8, 9, 10,
         10, 11, 8,
+
+        16, 17, 18,
+        18, 19, 16,
+
+        20, 21, 22,
+        22, 23, 20,
+
 
         0, 3, 2,
         2, 1, 0,
@@ -529,9 +538,10 @@ int main()
             glm::mat4 translateMatrix2 = glm::translate(identityMatrix, glm::vec3(-0.5f, 0.5f, -0.125f));
 
 
-            glm::mat4 translateMatrix3 = glm::translate(identityMatrix, glm::vec3(-1.5f, 1.0f, -1.7f));
+            glm::mat4 translateMatrix3 = glm::translate(identityMatrix, glm::vec3(-1.5f, 0.0f, -1.7f));
 
-            scaleMatrix = glm::scale(identityMatrix, glm::vec3(2.0f, 0.0f, .5f));
+
+            scaleMatrix = glm::scale(identityMatrix, glm::vec3(2.0f, 0.1f, .5f));
 
             model = translateMatrix3* translateMatrix * glm::rotate(identityMatrix, glm::radians(r), glm::vec3(0.0f, 1.0f, 0.0f))* translateMatrix2 * scaleMatrix ;
             ourShader.setMat4("model", model);
@@ -545,14 +555,25 @@ int main()
 
             translateMatrix2 = glm::translate(identityMatrix, glm::vec3(-0.5f, 0.5f, -0.125f));
 
+                   
 
-         
-
-            scaleMatrix = glm::scale(identityMatrix, glm::vec3(2.0f, 0.0f, .5f));
+           
 
             model = translateMatrix3 * translateMatrix * glm::rotate(identityMatrix, glm::radians(r+90.0f), glm::vec3(0.0f, 1.0f, 0.0f)) * translateMatrix2 * scaleMatrix;
             ourShader.setMat4("model", model);
             ourShader.setVec4("color", glm::vec4(0.0196, 0.0157f, 0.4f, 1.0f));
+
+            glBindVertexArray(VAO);
+            glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+
+
+            
+            scaleMatrix = glm::scale(identityMatrix, glm::vec3(.1f, .6f, .1f));
+            translateMatrix3 = glm::translate(identityMatrix, glm::vec3(-1.02f, 1.0f, -1.58f));
+
+            model = translateMatrix3 * scaleMatrix;
+            ourShader.setMat4("model", model);
+            ourShader.setVec4("color", glm::vec4(0.0, 0.0f, 0.0f, 1.0f));
 
             glBindVertexArray(VAO);
             glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
@@ -597,9 +618,9 @@ int main()
             glm::mat4 translateMatrix2 = glm::translate(identityMatrix, glm::vec3(-0.5f, 0.5f, -0.125f));
 
 
-            glm::mat4 translateMatrix3 = glm::translate(identityMatrix, glm::vec3(-1.5f, 1.0f, -1.7f));
+            glm::mat4 translateMatrix3 = glm::translate(identityMatrix, glm::vec3(-1.5f, 0.0f, -1.7f));
 
-            scaleMatrix = glm::scale(identityMatrix, glm::vec3(2.0f, 0.0f, .5f));
+            scaleMatrix = glm::scale(identityMatrix, glm::vec3(2.0f, 0.1f, .5f));
 
             model = translateMatrix3 * translateMatrix * glm::rotate(identityMatrix, glm::radians(r), glm::vec3(0.0f, 1.0f, 0.0f)) * translateMatrix2 * scaleMatrix;
             ourShader.setMat4("model", model);
@@ -616,11 +637,24 @@ int main()
 
 
 
-            scaleMatrix = glm::scale(identityMatrix, glm::vec3(2.0f, 0.0f, .5f));
+            
 
             model = translateMatrix3 * translateMatrix * glm::rotate(identityMatrix, glm::radians( r+90.0f), glm::vec3(0.0f, 1.0f, 0.0f)) * translateMatrix2 * scaleMatrix;
             ourShader.setMat4("model", model);
             ourShader.setVec4("color", glm::vec4(0.0196, 0.0157f, 0.4f, 1.0f));
+
+            glBindVertexArray(VAO);
+            glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+
+
+
+
+            scaleMatrix = glm::scale(identityMatrix, glm::vec3(.1f, .6f, .1f));
+            translateMatrix3 = glm::translate(identityMatrix, glm::vec3(-1.02f, 1.0f, -1.58f));
+
+            model = translateMatrix3 * scaleMatrix;
+            ourShader.setMat4("model", model);
+            ourShader.setVec4("color", glm::vec4(0.0, 0.0f, 0.0f, 1.0f));
 
             glBindVertexArray(VAO);
             glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
@@ -899,6 +933,13 @@ void processInput(GLFWwindow* window)
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
         camera.ProcessKeyboard(RIGHT, deltaTime);
     }
+    if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS) {
+        camera.ProcessKeyboard(YAW_L, deltaTime);
+    }
+    if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS) {
+        camera.ProcessKeyboard(YAW_R, deltaTime);
+    }
+
 
     if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS)
     {
@@ -970,16 +1011,6 @@ void processInput(GLFWwindow* window)
     {
         eyeY -= 2.5 * deltaTime;
         basic_camera.changeEye(eyeX, eyeY, eyeZ);
-    }
-    if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
-    {
-        lookAtX += 2.5 * deltaTime;
-        basic_camera.changeLookAt(lookAtX, lookAtY, lookAtZ);
-    }
-    if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
-    {
-        lookAtX -= 2.5 * deltaTime;
-        basic_camera.changeLookAt(lookAtX, lookAtY, lookAtZ);
     }
     if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS)
     {
